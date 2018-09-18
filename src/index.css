@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+
 body {
-  background-image: url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/squares.png)
+  background-image: url(https://raw.githubusercontent.com/hnryjmes/cellular-automaton/master/public/dark-mosaic.png);
+  font-family: 'Roboto Mono', monospace;
 }
 
 .box {
