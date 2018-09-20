@@ -21,7 +21,7 @@ class Box extends React.Component {
 
 class Grid extends React.Component {
   render() {
-    const width = (this.props.cols * 14) + 1;
+    const width = (this.props.cols * 14);
     var rowsArr = [];
 
     var boxClass = "";
@@ -138,6 +138,42 @@ class Main extends React.Component {
     clearInterval(this.intervalId);
   }
 
+  slow = () => {
+    this.speed = 1000;
+    this.playButton();
+  }
+
+  fast = () => {
+    this.speed = 100;
+    this.playButton();
+  }
+
+  clear = () => {
+    var grid = Array(this.rows).fill().map(() => Array(this.cols).fill(false));
+    this.setState({
+      gridFull: grid,
+      generation: 0,
+    });
+  }
+
+  gridSize = (size) => {
+    switch (size) {
+      case "1":
+      this.cols = 20;
+      this.rows = 10;
+      break;
+      case "2":
+      this.cols = 50;
+      this.rows = 30;
+      break;
+      case "3":
+      this.cols = 70;
+      this.rows = 50;
+      break;
+    }
+    this.clear();
+  }
+
   play = () => {
     let g = this.state.gridFull;
     let g2 = arrayClone(this.state.gridFull);
@@ -189,6 +225,11 @@ class Main extends React.Component {
           selectBox={this.selectBox}
         />
         <h2>generations: {this.state.generation}</h2>
+        <br/>
+        <h4>more info: <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life" target="_blank">Conway's Game of Life</a></h4>
+        <br/>
+        <h6>built by <a href="https://github.com/hnryjmes" target="_blank" style={{color: "white"}}>hnryjmes</a></h6>
+        <h6>designed by <a href="https://github.com/beaucarnes" target="_blank" style={{color: "white"}}>beaucarnes</a></h6>
       </div>
     );
   }
